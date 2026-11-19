@@ -63,9 +63,16 @@ from [Asterios catalog v55](https://www.kaggle.com/datasets/asteriospanoras/sant
 The public bank and selected puzzle credits are in the
 [Asterios notice](notices/asterios-v55.md).
 
-The current verified candidate is `artifacts/santa-2026-136642.csv.enc`, score
+The previous verified candidate is `artifacts/santa-2026-136642.csv.enc`, score
 `136642`, and SHA-256
 `a1b482c566e094da3658957365e727e657320e46c16bedd3093a842ee2dd27bb`.
 It adds C fan-out and Mojo DAG-join rewrites and shorter programs from the
 Asterios public bank. Selected puzzle credits are recorded in the
 [catalog v56 notice](notices/asterios-v56.md) and [catalog v57 notice](notices/asterios-v57.md).
+
+The current verified candidate is `artifacts/santa-2026-136636.csv.enc`, score
+`136636`, and SHA-256
+`8658eacaca8248c3973478cd5b1cef51a21e31faefd95c4cce97d34279a55f0d`.
+It combines recipes across multiple traces with a shorter program from
+[Asterios catalog v58](https://www.kaggle.com/datasets/asteriospanoras/santa-2026-elf-programs-and-experiments/versions/58).
+The selected puzzle credit is in the [catalog v58 notice](notices/asterios-v58.md).
