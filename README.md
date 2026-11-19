@@ -34,9 +34,15 @@ The source dataset carries its own upstream attribution in `public_lineage.csv`.
 The Apache-2.0 terms for the imported programs are in
 [licenses/Apache-2.0.txt](licenses/Apache-2.0.txt).
 
-The current verified candidate is `artifacts/santa-2026-136739.csv.enc`, score
+The previous verified candidate is `artifacts/santa-2026-136739.csv.enc`, score
 `136739`, and SHA-256
 `0cb33e18972b270bae7798ced44bbd861e304c7728695637f18c17cf5630aefa`.
 It uses native Mojo and C group rewrites and merges public programs from
 [Roman Rozen’s IceFire Strong Start v63](https://www.kaggle.com/code/romanrozen/santa-2026-icefire-strong-start?scriptVersionId=371584899)
 and [Asterios Panoras’s program dataset v52](https://www.kaggle.com/datasets/asteriospanoras/santa-2026-elf-programs-and-experiments).
+
+The current verified candidate is `artifacts/santa-2026-136703.csv.enc`, score
+`136703`, and SHA-256
+`98933fb5d34eef0e08a7738ee6dc18e1b530fce4e30990bb24f76eba4450e439`.
+It includes exact factor and shared-scale rewrites in C, shared-scaffold rewrites
+in Mojo, and shorter recipes selected jointly from previously attributed traces.
