@@ -55,10 +55,17 @@ It includes shorter programs from
 and further native group rewrites. The public bank’s author and upstream credits
 are preserved in [its original notice](notices/hanif-v19.md).
 
-The current verified candidate is `artifacts/santa-2026-136650.csv.enc`, score
+The previous verified candidate is `artifacts/santa-2026-136650.csv.enc`, score
 `136650`, and SHA-256
 `ad91d46596e2bfc532e34b238355c5d455186fc5a32a01053313f9b7882cc3b9`.
 It combines wider C factor searches, cross-trace rewrites, and shorter programs
 from [Asterios catalog v55](https://www.kaggle.com/datasets/asteriospanoras/santa-2026-elf-programs-and-experiments/versions/55).
 The public bank and selected puzzle credits are in the
 [Asterios notice](notices/asterios-v55.md).
+
+The current verified candidate is `artifacts/santa-2026-136642.csv.enc`, score
+`136642`, and SHA-256
+`a1b482c566e094da3658957365e727e657320e46c16bedd3093a842ee2dd27bb`.
+It adds C fan-out and Mojo DAG-join rewrites and shorter programs from the
+Asterios public bank. Selected puzzle credits are recorded in the
+[catalog v56 notice](notices/asterios-v56.md) and [catalog v57 notice](notices/asterios-v57.md).
