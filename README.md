@@ -91,8 +91,14 @@ It adds C searches that factor signed relations between roots, a Mojo
 search for shared two-operation radices, and shorter programs from
 [Asterios catalog v60](notices/asterios-v60.md).
 
-The current candidate is `artifacts/santa-2026-136589.csv.enc`, score
+The previous verified candidate is `artifacts/santa-2026-136589.csv.enc`, score
 `136589`, and SHA-256
 `ce4a199604e3120dfd2cf64647e60491ab507a10b2dfe3f3a1970bc2c95f9bc7`.
 It uses a wider radix search in C and Mojo, recipe selection across valid
 traces, and shorter programs from [Asterios catalog v61](notices/asterios-v61.md).
+
+The current candidate is `artifacts/santa-2026-136210.csv.enc`, score
+`136210`, and SHA-256
+`38d788f34b7832e88eb1250778b654875b9c61f64ca3a9e41f3ab2f7347be5d6`.
+It combines shorter programs from the Apache-licensed
+[DAG-LNS program bank](notices/dag-lns-v1.md) with native C recipe search.
