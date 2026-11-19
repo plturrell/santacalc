@@ -101,10 +101,27 @@ def inspect(puzzles_data, candidate_data, jobs):
     }
 
 
+def same_score(remote, expected):
+    try:
+        return Decimal(remote) == expected
+    except (InvalidOperation, TypeError):
+        return False
+
+
 def publish(frozen, manifest, message, receipt_path):
-    preflight = subprocess.run([*KAGGLE, "competitions", "submissions", COMPETITION, "--page-size", "1"])
+    preflight = subprocess.run(
+        [*KAGGLE, "competitions", "submissions", COMPETITION, "--page-size", "100", "--format", "json"],
+        stdout=subprocess.PIPE, text=True,
+    )
     if preflight.returncode:
         raise ValueError("Kaggle preflight failed before upload.")
+    try:
+        text = preflight.stdout.strip()
+        recent = [] if text == "No submissions found" else json.loads(text)
+        if not isinstance(recent, list):
+            raise ValueError("expected a list")
+    except ValueError as error:
+        raise ValueError("Could not read Kaggle submission history. Upload stopped.") from error
 
     receipt = {"submission_ref": None, "remote_score": None, "sha256": manifest["sha256"],
                "local_score": manifest["score"], "status": "pending"}
@@ -113,10 +130,28 @@ def publish(frozen, manifest, message, receipt_path):
         if receipt_path:
             receipt_path.write_text(json.dumps(receipt, indent=2) + "\n", encoding="utf-8")
 
+    digest = manifest["sha256"]
+    score = manifest["score"]
+    for previous in recent:
+        description = previous.get("description") or ""
+        if not description.endswith((f" ({score}, {digest})", f" ({score}, {digest[:12]})")):
+            continue
+        receipt["submission_ref"] = previous.get("ref")
+        receipt["remote_score"] = previous.get("publicScore")
+        receipt["reused"] = True
+        if previous.get("status") == "SubmissionStatus.COMPLETE" and same_score(receipt["remote_score"], score):
+            receipt["status"] = "verified"
+            save_receipt()
+            print(f"Existing verified Kaggle submission: {receipt['submission_ref']}")
+            return
+        receipt["status"] = "existing_submission_unconfirmed"
+        save_receipt()
+        raise ValueError("Kaggle already has a submission for this candidate. Check its status before retrying.")
+
     with TemporaryDirectory(prefix="santa-2026-") as temp:
         snapshot = Path(temp) / "submission.csv"
         snapshot.write_bytes(frozen)
-        note = f"{message} ({manifest['score']}, {manifest['sha256'][:12]})"
+        note = f"{message} ({score}, {digest})"
         command = [*KAGGLE, "competitions", "submit", COMPETITION, "-f", str(snapshot),
                    "-m", note, "--wait", "600"]
         with subprocess.Popen(command, stdout=subprocess.PIPE, text=True) as attempt:
@@ -131,10 +166,7 @@ def publish(frozen, manifest, message, receipt_path):
                     receipt["remote_score"] = scored[1]
             returncode = attempt.wait()
 
-    try:
-        validated = Decimal(receipt["remote_score"]) == manifest["score"]
-    except (InvalidOperation, TypeError):
-        validated = False
+    validated = same_score(receipt["remote_score"], score)
     if returncode or receipt["submission_ref"] is None:
         receipt["status"] = "unconfirmed"
     elif not validated:

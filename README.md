@@ -18,3 +18,8 @@ The refreshed candidate is `artifacts/santa-2026-137711.csv.enc`, score
 `aca19423be5ad2a335ff3e93cc156fcafb845f4d2953e4448650bcc581d9dd77`.
 The two additional savings are from the Apache-2.0
 [Asterios program dataset](https://www.kaggle.com/datasets/asteriospanoras/santa-2026-elf-programs-and-experiments).
+
+The current verified candidate is `artifacts/santa-2026-137710.csv.enc`, score
+`137710`, and SHA-256
+`2b78949fbac45e0f1f39f6c6b55f505e78b10c7a77b3cd72ff7e1d3ad81bbbc5`.
+The one-instruction saving comes from sharing a signed sum on `scored_0610`.
