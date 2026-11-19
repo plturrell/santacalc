@@ -41,8 +41,16 @@ It uses native Mojo and C group rewrites and merges public programs from
 [Roman Rozen’s IceFire Strong Start v63](https://www.kaggle.com/code/romanrozen/santa-2026-icefire-strong-start?scriptVersionId=371584899)
 and [Asterios Panoras’s program dataset v52](https://www.kaggle.com/datasets/asteriospanoras/santa-2026-elf-programs-and-experiments).
 
-The current verified candidate is `artifacts/santa-2026-136703.csv.enc`, score
+The previous verified candidate is `artifacts/santa-2026-136703.csv.enc`, score
 `136703`, and SHA-256
 `98933fb5d34eef0e08a7738ee6dc18e1b530fce4e30990bb24f76eba4450e439`.
 It includes exact factor and shared-scale rewrites in C, shared-scaffold rewrites
 in Mojo, and shorter recipes selected jointly from previously attributed traces.
+
+The current verified candidate is `artifacts/santa-2026-136666.csv.enc`, score
+`136666`, and SHA-256
+`c99bf8ebe3603d6ed5c329be46f876bdfc8d1301c75654e7038bb3b3ee46e12b`.
+It includes shorter programs from
+[Hanif Noer Rofiq’s public program bank v19](https://www.kaggle.com/datasets/hanifnoerrofiq/santa-2026-elf-calculator-peephole-programs/versions/19)
+and further native group rewrites. The public bank’s author and upstream credits
+are preserved in [its original notice](notices/hanif-v19.md).
