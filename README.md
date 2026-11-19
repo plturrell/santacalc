@@ -47,10 +47,18 @@ The previous verified candidate is `artifacts/santa-2026-136703.csv.enc`, score
 It includes exact factor and shared-scale rewrites in C, shared-scaffold rewrites
 in Mojo, and shorter recipes selected jointly from previously attributed traces.
 
-The current verified candidate is `artifacts/santa-2026-136666.csv.enc`, score
+The previous verified candidate is `artifacts/santa-2026-136666.csv.enc`, score
 `136666`, and SHA-256
 `c99bf8ebe3603d6ed5c329be46f876bdfc8d1301c75654e7038bb3b3ee46e12b`.
 It includes shorter programs from
 [Hanif Noer Rofiq’s public program bank v19](https://www.kaggle.com/datasets/hanifnoerrofiq/santa-2026-elf-calculator-peephole-programs/versions/19)
 and further native group rewrites. The public bank’s author and upstream credits
 are preserved in [its original notice](notices/hanif-v19.md).
+
+The current verified candidate is `artifacts/santa-2026-136650.csv.enc`, score
+`136650`, and SHA-256
+`ad91d46596e2bfc532e34b238355c5d455186fc5a32a01053313f9b7882cc3b9`.
+It combines wider C factor searches, cross-trace rewrites, and shorter programs
+from [Asterios catalog v55](https://www.kaggle.com/datasets/asteriospanoras/santa-2026-elf-programs-and-experiments/versions/55).
+The public bank and selected puzzle credits are in the
+[Asterios notice](notices/asterios-v55.md).
