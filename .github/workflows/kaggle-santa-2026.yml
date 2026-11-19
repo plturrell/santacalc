@@ -1,0 +1,79 @@
+name: Verify and submit Santa 2026 candidate
+
+on:
+  workflow_dispatch:
+    inputs:
+      candidate:
+        description: Path to the encrypted candidate in the selected commit
+        required: true
+        default: artifacts/santa-2026-137710.csv.enc
+        type: string
+      expected_score:
+        description: Expected instruction count
+        required: true
+        type: number
+      expected_sha256:
+        description: Expected SHA-256 of the exact CSV
+        required: true
+        type: string
+      publish:
+        description: Submit the verified file to Kaggle
+        default: false
+        type: boolean
+
+permissions:
+  contents: read
+
+concurrency:
+  group: santa-2026-kaggle
+  cancel-in-progress: false
+
+jobs:
+  verify-and-release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    environment: kaggle-santa-2026
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@v6
+      - name: Fetch the official puzzles
+        env:
+          KAGGLE_API_TOKEN: ${{ secrets.KAGGLE_API_TOKEN }}
+        run: |
+          uvx --with six kaggle@2.2.5 competitions download santa-2026 -p build/kaggle --unzip
+      - name: Verify the candidate
+        env:
+          CANDIDATE: ${{ inputs.candidate }}
+          SANTA_CANDIDATE_KEY: ${{ secrets.SANTA_CANDIDATE_KEY }}
+          EXPECTED_SCORE: ${{ inputs.expected_score }}
+          EXPECTED_SHA256: ${{ inputs.expected_sha256 }}
+        run: |
+          mkdir -p build/release
+          umask 077
+          test -n "$SANTA_CANDIDATE_KEY"
+          openssl enc -d -aes-256-cbc -pbkdf2 -iter 200000 \
+            -pass env:SANTA_CANDIDATE_KEY -in "$CANDIDATE" -out build/release/submission.csv
+          unset SANTA_CANDIDATE_KEY
+          python3 submit_kaggle.py build/kaggle/puzzles.csv build/release/submission.csv \
+            --expect-score "$EXPECTED_SCORE" --expect-sha256 "$EXPECTED_SHA256" \
+            --manifest build/release/manifest.json
+      - name: Submit to Kaggle and wait for the result
+        if: inputs.publish
+        env:
+          KAGGLE_API_TOKEN: ${{ secrets.KAGGLE_API_TOKEN }}
+          EXPECTED_SCORE: ${{ inputs.expected_score }}
+          EXPECTED_SHA256: ${{ inputs.expected_sha256 }}
+        run: |
+          python3 submit_kaggle.py build/kaggle/puzzles.csv build/release/submission.csv \
+            --expect-score "$EXPECTED_SCORE" --expect-sha256 "$EXPECTED_SHA256" \
+            --receipt build/release/kaggle-receipt.json \
+            --message "GitHub Actions run $GITHUB_RUN_ID" --publish
+      - name: Retain the manifest and Kaggle receipt
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: santa-2026-verification
+          path: build/release/*.json
+          if-no-files-found: warn
