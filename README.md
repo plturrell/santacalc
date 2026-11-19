@@ -24,7 +24,7 @@ The previous verified candidate is `artifacts/santa-2026-137710.csv.enc`, score
 `2b78949fbac45e0f1f39f6c6b55f505e78b10c7a77b3cd72ff7e1d3ad81bbbc5`.
 The one-instruction saving comes from sharing a signed sum on `scored_0610`.
 
-The current verified candidate is `artifacts/santa-2026-136838.csv.enc`, score
+The previous verified candidate is `artifacts/santa-2026-136838.csv.enc`, score
 `136838`, and SHA-256
 `0590e3a52bd0c46517cb88ae1d68cb28fb56393a359bad5a0c9b2bba86d7664d`.
 It merges shorter programs from version 51 of the
@@ -33,3 +33,10 @@ with the previous candidate. Native C rewrites then shorten 51 more programs.
 The source dataset carries its own upstream attribution in `public_lineage.csv`.
 The Apache-2.0 terms for the imported programs are in
 [licenses/Apache-2.0.txt](licenses/Apache-2.0.txt).
+
+The current verified candidate is `artifacts/santa-2026-136739.csv.enc`, score
+`136739`, and SHA-256
+`0cb33e18972b270bae7798ced44bbd861e304c7728695637f18c17cf5630aefa`.
+It uses native Mojo and C group rewrites and merges public programs from
+[Roman Rozen’s IceFire Strong Start v63](https://www.kaggle.com/code/romanrozen/santa-2026-icefire-strong-start?scriptVersionId=371584899)
+and [Asterios Panoras’s program dataset v52](https://www.kaggle.com/datasets/asteriospanoras/santa-2026-elf-programs-and-experiments).
