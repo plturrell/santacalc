@@ -12,3 +12,9 @@ For the baseline release, use `artifacts/santa-2026.csv.enc`, score `137713`,
 and SHA-256 `d02939b1ecc1c72ca50361bc889dd6300e9848de2d0cfb434106b81f8d8d459b`.
 
 Baseline programs combine public releases from Hanif, Asterios, and Rudolph.
+
+The refreshed candidate is `artifacts/santa-2026-137711.csv.enc`, score
+`137711`, and SHA-256
+`aca19423be5ad2a335ff3e93cc156fcafb845f4d2953e4448650bcc581d9dd77`.
+The two additional savings are from the Apache-2.0
+[Asterios program dataset](https://www.kaggle.com/datasets/asteriospanoras/santa-2026-elf-programs-and-experiments).
