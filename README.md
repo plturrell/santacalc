@@ -77,9 +77,16 @@ It combines recipes across multiple traces with a shorter program from
 [Asterios catalog v58](https://www.kaggle.com/datasets/asteriospanoras/santa-2026-elf-programs-and-experiments/versions/58).
 The selected puzzle credit is in the [catalog v58 notice](notices/asterios-v58.md).
 
-The current candidate is `artifacts/santa-2026-136606.csv.enc`, score
+The previous verified candidate is `artifacts/santa-2026-136606.csv.enc`, score
 `136606`, and SHA-256
 `1c733c5f9c30c1291b203b591143e8c700cab9e9ace027a264374793b4c5866b`.
 It adds native C recipe selection and shorter programs from the Asterios
 public bank. Selected puzzle IDs are recorded in the
 [catalog v59 notice](notices/asterios-v59.md).
+
+The current candidate is `artifacts/santa-2026-136599.csv.enc`, score
+`136599`, and SHA-256
+`900f802c4b90223800d1ab5a5e75bc50b143028b64aaf6d5db7148c8b295d291`.
+It adds C searches that factor signed relations between roots, a Mojo
+search for shared two-operation radices, and shorter programs from
+[Asterios catalog v60](notices/asterios-v60.md).
