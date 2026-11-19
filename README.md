@@ -84,9 +84,15 @@ It adds native C recipe selection and shorter programs from the Asterios
 public bank. Selected puzzle IDs are recorded in the
 [catalog v59 notice](notices/asterios-v59.md).
 
-The current candidate is `artifacts/santa-2026-136599.csv.enc`, score
+The previous verified candidate is `artifacts/santa-2026-136599.csv.enc`, score
 `136599`, and SHA-256
 `900f802c4b90223800d1ab5a5e75bc50b143028b64aaf6d5db7148c8b295d291`.
 It adds C searches that factor signed relations between roots, a Mojo
 search for shared two-operation radices, and shorter programs from
 [Asterios catalog v60](notices/asterios-v60.md).
+
+The current candidate is `artifacts/santa-2026-136589.csv.enc`, score
+`136589`, and SHA-256
+`ce4a199604e3120dfd2cf64647e60491ab507a10b2dfe3f3a1970bc2c95f9bc7`.
+It uses a wider radix search in C and Mojo, recipe selection across valid
+traces, and shorter programs from [Asterios catalog v61](notices/asterios-v61.md).
