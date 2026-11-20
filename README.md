@@ -118,8 +118,16 @@ with C recipe search on programs including
 [Alex Chilton’s Rudolph bank](https://www.kaggle.com/datasets/alexchilton/santa-2026-rudolph-programs)
 and [Santiago Zazo’s verified bank](https://www.kaggle.com/datasets/santiagozazo/santa-2026-137792-verified-bank).
 
-The current candidate is `artifacts/santa-2026-136166.csv.enc`, score
+The previous verified candidate is `artifacts/santa-2026-136166.csv.enc`, score
 `136166`, and SHA-256
 `1406f9b87b1221b0925080db8da59acc02eca3abcfe7f7a2a27eb2073bd83a3e`.
 It combines Mojo dependency-graph rewrites, C fan-out and wide-radix
 rewrites, and shorter programs from [Asterios catalog v65](notices/asterios-v65.md).
+
+The current candidate is `artifacts/santa-2026-136149.csv.enc`, score
+`136149`, and SHA-256
+`7fc9128ad3ec45c78e06a5d6bc367154e9f8161f93317441becc71b97e67f89b`.
+It combines shorter programs from [Asterios catalog v66](notices/asterios-v66.md)
+and the [updated Rudolph bank](notices/rudolph-0030.md) with native C fan-out,
+wide-radix, and recipe rewrites. The fan-out pass supplies equal-cost
+derivations for downstream searches.
