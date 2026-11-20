@@ -187,3 +187,10 @@ The portfolio selected shorter programs from this bank for 181 puzzle IDs. Share
 - `scored_0988`
 - `scored_0994`
 - `scored_0997`
+
+The 136,189 release also uses three shorter programs generated locally by
+running this dataset’s Apache-licensed `elfopt.cpp` from the 136,210 baseline.
+
+- `scored_0650`
+- `scored_0715`
+- `scored_0958`
