@@ -132,10 +132,18 @@ and the [updated Rudolph bank](notices/rudolph-0030.md) with native C fan-out,
 wide-radix, and recipe rewrites. The fan-out pass supplies equal-cost
 derivations for downstream searches.
 
-The current candidate is `artifacts/santa-2026-136146.csv.enc`, score
+The previous verified candidate is `artifacts/santa-2026-136146.csv.enc`, score
 `136146`, and SHA-256
 `09599436287259142a3dd90897802efdef2f1dbd452a6feb308dbed81378cd82`.
 It shortens `scored_0416` by three instructions using the
 [updated Asterios snapshot](notices/asterios-0042.md) and two native C
 recipe passes. The last pass lets two consumers switch to a shared
 operand together.
+
+The current candidate is `artifacts/santa-2026-136058.csv.enc`, score
+`136058`, and SHA-256
+`ea0708f3e82e341903124d2d9b249df1b5a7698e9563e1e2efc80cfb243cc6ef`.
+It combines shorter programs from the [DAG-LNS snapshot](notices/dag-lns-0052.md)
+and [Asterios snapshot](notices/asterios-0102.md) with a local DAG-LNS run.
+The native C and Mojo solvers combine arithmetic recipes collected during
+the local runs. Both solvers replay their chosen programs before release.
